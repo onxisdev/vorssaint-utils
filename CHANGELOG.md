@@ -4,6 +4,22 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [2.4.5] - 2026-06-12
+
+### Fixed
+- **Uninstaller**: apps the system protects (root-owned, installer-based) are
+  now removed through Finder, which asks for the administrator password and
+  moves them to the Trash like a drag would. The scan also hardens against
+  hostile bundle ids and never lists anything outside ~/Library, /Library or
+  the picked app
+
+### Changed
+- The uninstaller lives directly inside Settings: drop an app on the page, no
+  separate window, no enable toggle
+- The display now always stays on while a keep-awake session is active; the
+  separate toggle is gone
+- Cleaner wording across the app and the documentation
+
 ## [2.4.4] - 2026-06-12
 
 Stability pass over the whole project: same behavior, fewer ways to fail.
