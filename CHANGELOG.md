@@ -4,6 +4,17 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [2.5.3] - 2026-06-13
+
+### Fixed
+- **The uninstaller no longer keeps asking for Full Disk Access after you grant
+  it.** The app detected access by reading the TCC database, but that file does
+  not exist on every macOS version, so the check always failed and the banner
+  stayed even with access granted and the app reopened. It now also confirms
+  access by listing a protected folder that exists (Safari, Mail, Messages and
+  the like), which is reliable across versions. No need to re-grant: the banner
+  clears on its own once you are on this version
+
 ## [2.5.2] - 2026-06-13
 
 ### Fixed

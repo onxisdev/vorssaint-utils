@@ -45,14 +45,35 @@ final class Permissions: ObservableObject {
         }
     }
 
-    /// Reading the TCC database succeeds only with Full Disk Access — the
-    /// standard, prompt-free way to detect it.
+    /// Detects Full Disk Access without a prompt. Reading the TCC database is the
+    /// classic signal, but that file is absent on some macOS versions (so a
+    /// missing file would read as "no access" forever, even once granted). The
+    /// dependable fallback is to list a protected directory that exists: that
+    /// listing is denied without Full Disk Access and succeeds with it.
     private static func probeFullDiskAccess() -> Bool {
-        let path = (NSHomeDirectory() as NSString)
+        let home = NSHomeDirectory()
+        let fm = FileManager.default
+
+        // Preferred when present: the TCC database is readable only with access.
+        let tccDB = (home as NSString)
             .appendingPathComponent("Library/Application Support/com.apple.TCC/TCC.db")
-        guard let handle = FileHandle(forReadingAtPath: path) else { return false }
-        handle.closeFile()
-        return true
+        if let handle = FileHandle(forReadingAtPath: tccDB) {
+            let ok = (try? handle.read(upToCount: 1)) != nil
+            try? handle.close()
+            if ok { return true }
+        }
+
+        // Works on every version: each of these is gated by Full Disk Access, so
+        // a successful listing (even of an empty directory) means it is granted.
+        let gatedDirs = [
+            "Library/Safari",
+            "Library/Mail",
+            "Library/Messages",
+            "Library/Cookies",
+            "Library/Suggestions",
+            "Library/Application Support/MobileSync",
+        ].map { (home as NSString).appendingPathComponent($0) }
+        return gatedDirs.contains { (try? fm.contentsOfDirectory(atPath: $0)) != nil }
     }
 
     /// Shows the system Accessibility prompt (once per TCC reset).
