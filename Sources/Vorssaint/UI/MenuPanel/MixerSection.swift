@@ -85,7 +85,10 @@ private struct MixerRow: View {
 
             Slider(value: volumeBinding, in: 0...AppVolumeMixer.maxVolume)
                 .controlSize(.small)
-                .tint(isBoosting ? boostColor : nil)
+                // Pass an explicit accent (not nil) for the normal state: on the
+                // macOS slider, tint(nil) does not reliably clear a previously
+                // applied colour, so the bar would stay amber after leaving boost.
+                .tint(isBoosting ? boostColor : Color.accentColor)
 
             HStack(spacing: 2) {
                 if isBoosting {

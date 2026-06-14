@@ -4,6 +4,13 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [2.8.1] - 2026-06-14
+
+### Fixed
+- The mixer slider no longer stays amber after a boosted app returns to 100% or
+  below. It goes back to the normal color as soon as the volume is no longer
+  above 100%.
+
 ## [2.8.0] - 2026-06-14
 
 ### Added
