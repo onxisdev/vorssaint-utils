@@ -13,6 +13,10 @@ algumas chatices do dia a dia.
 IA. Nada sai do seu Mac, exceto uma verificação de atualização que você pode
 desligar. É nativo (SwiftUI + AppKit), não é Electron, então fica pequeno e rápido.
 
+<p align="center">
+  <img src="screenshot.png" alt="O painel do Vorssaint na barra de menus: manter acordado, mixer de volume por app e monitor do sistema ao vivo com temperaturas, uso de CPU e GPU e pressão de memória" width="420">
+</p>
+
 ## O que ele faz
 
 Cada recurso é opcional e tem a sua própria página nos Ajustes.

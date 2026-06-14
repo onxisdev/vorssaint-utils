@@ -17,6 +17,10 @@ volume per app, switch windows, and fix a few everyday annoyances.
 Nothing leaves your Mac except an update check you can turn off. It's native
 (SwiftUI + AppKit), not Electron, so it stays small and quick.
 
+<p align="center">
+  <img src="docs/screenshot.png" alt="The Vorssaint menu bar panel: keep awake, a per-app volume mixer, and a live system monitor with temperatures, CPU and GPU load and memory pressure" width="420">
+</p>
+
 ## What it does
 
 Every feature is optional and has its own page in Settings.
