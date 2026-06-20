@@ -1,7 +1,7 @@
 # Vorssaint
 
 > The free, open-source toolkit that replaces several paid Mac utilities.
-
+ 
 <p align="center"><strong><a href="https://vorssaint.com">vorssaint.com</a></strong></p>
 
 [![Release](https://img.shields.io/github/v/release/vorssaint/vorssaint-utils?label=release)](https://github.com/vorssaint/vorssaint-utils/releases)
